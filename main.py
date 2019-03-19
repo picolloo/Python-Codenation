@@ -4,6 +4,7 @@ import csv
 from itertools import islice
 from functools import reduce
 from collections import Counter
+from collections import defaultdict
 
 # Todas as perguntas são referentes ao arquivo `data.csv`
 # Você ** não ** pode utilizar o pandas e nem o numpy para este desafio.
@@ -55,7 +56,7 @@ def q_4():
     with open('data.csv', encoding="utf8") as csvfile:
         readCSV = csv.DictReader(csvfile, delimiter=',')
 
-        richest = {}
+        richest = defaultdict(lambda: [])
 
         for row in readCSV:
             salary = float(row["eur_wage"])
@@ -65,10 +66,8 @@ def q_4():
                 if (salary > lower):
                     del [lower]
 
-            if salary in richest:
-                richest[salary].append(row["full_name"])
-            else:
-                richest[salary] = [row["full_name"]]
+
+            richest[salary].append(row["full_name"])
 
         richest = dict(sorted(richest.items(), reverse=True))
         return reduce(list.__add__, list(richest.values()))[:10]
@@ -79,7 +78,7 @@ def q_5():
     with open('data.csv', encoding="utf8") as csvfile:
         readCSV = csv.DictReader(csvfile, delimiter=',')
 
-        older = {}
+        older = defaultdict(lambda: [])
         for row in readCSV:
             age = int(row["age"])
             name = row["full_name"]
@@ -88,11 +87,8 @@ def q_5():
                 lower = min(older) if older else 0
                 if age > lower:
                     del older[lower]
-
-            if age in older:
-                older[age].append(name)
-            else:
-                older[age] = [name]
+   
+            older[age].append(name)     
 
         older = dict(sorted(older.items(), reverse=True))
         return reduce(list.__add__, list(older.values()))[:10]
@@ -108,3 +104,5 @@ def q_6():
             ages.append(row["age"])
 
         return {int(k): int(v) for k, v in Counter(ages).items()}
+
+print(q_5())

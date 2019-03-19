@@ -1,7 +1,7 @@
 ============================= test session starts =============================
-platform win32 -- Python 3.7.0, pytest-3.6.1, py-1.5.3, pluggy-0.6.0 -- C:\Users\lucas.picollo\codenation\python-1\venv\Scripts\python.exe
+platform win32 -- Python 3.7.2, pytest-3.6.1, py-1.5.3, pluggy-0.6.0 -- C:\Users\Picollo\AppData\Local\Programs\Python\Python37\python.exe
 cachedir: .pytest_cache
-rootdir: C:\Users\lucas.picollo\codenation\python-1, inifile:
+rootdir: C:\Users\Picollo\codenation\python-1, inifile:
 collecting ... collected 7 items
 
 test_submit.py::test_modules PASSED                                      [ 14%]
@@ -12,5 +12,5 @@ test_submit.py::test_q_4 PASSED                                          [ 71%]
 test_submit.py::test_q_5 PASSED                                          [ 85%]
 test_submit.py::test_q_6 PASSED                                          [100%]
 
--- generated xml file: C:\Users\lucas.picollo\codenation\python-1\output.xml --
-========================== 7 passed in 5.31 seconds ===========================
+----- generated xml file: C:\Users\Picollo\codenation\python-1\output.xml -----
+========================== 7 passed in 9.31 seconds ===========================
