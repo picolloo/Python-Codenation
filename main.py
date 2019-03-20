@@ -16,24 +16,16 @@ def q_1():
     with open('data.csv', encoding="utf8") as csvfile:
         readCSV = csv.DictReader(csvfile, delimiter=',')
 
-        nationality = []
-
-        for row in readCSV:
-            nationality.append(row["nationality"])
-
-        return len(list(set(nationality)))
-
+        return len(set([row["nationality"] for row in readCSV]))
 
 # **Q2.** Quantos clubes (coluna `club`) diferentes existem no arquivo?
+
+
 def q_2():
     with open('data.csv', encoding="utf8") as csvfile:
         readCSV = csv.DictReader(csvfile, delimiter=',')
 
-        clubs = []
-        for row in readCSV:
-            clubs.append(row["club"])
-
-        return len(list(set(clubs)))
+        return len(set([row["club"] for row in readCSV]))
 
 
 # **Q3.** Liste o nome completo dos 20 primeiros jogadores de acordo com a coluna `full_name`.
@@ -42,12 +34,7 @@ def q_3():
         head = list(islice(csvfile, 21))
         readCSV = csv.DictReader(head, delimiter=',')
 
-        players = []
-        for row in readCSV:
-            players.append(row["full_name"])
-
-        print(len(players))
-        return players
+        return [row["full_name"] for row in readCSV]
 
 
 # **Q4.** Quem são os top 10 jogadores que ganham mais dinheiro (utilize as colunas `full_name` e `eur_wage`)?
@@ -64,7 +51,6 @@ def q_4():
                 lower = min(richest) if richest else 0
                 if (salary > lower):
                     del [lower]
-
 
             richest[salary].append(row["full_name"])
 
@@ -86,8 +72,8 @@ def q_5():
                 lower = min(older) if older else 0
                 if age > lower:
                     del older[lower]
-   
-            older[age].append(name)     
+
+            older[age].append(name)
 
         older = dict(sorted(older.items(), reverse=True))
         return reduce(list.__add__, list(older.values()))[:10]
@@ -98,8 +84,5 @@ def q_6():
     with open('data.csv', encoding="utf8") as csvfile:
         readCSV = csv.DictReader(csvfile, delimiter=',')
 
-        ages = []
-        for row in readCSV:
-            ages.append(row["age"])
-
+        ages = [row["age"] for row in readCSV]
         return {int(k): int(v) for k, v in Counter(ages).items()}
