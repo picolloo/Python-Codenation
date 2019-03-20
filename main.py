@@ -18,7 +18,6 @@ def q_1():
 
         nationality = []
 
-        next(readCSV)
         for row in readCSV:
             nationality.append(row["nationality"])
 
@@ -104,5 +103,3 @@ def q_6():
             ages.append(row["age"])
 
         return {int(k): int(v) for k, v in Counter(ages).items()}
-
-print(q_5())
